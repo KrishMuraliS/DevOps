@@ -1,0 +1,29 @@
+#Installing Docker
+sudo apt install docker.io
+
+#switching to root user
+sudo su -
+
+#Moving to home folder
+cd /home/ubuntu
+
+#creating a Docker file
+touch Dockerfile
+vi Dockerfile
+	FROM ubuntu
+	RUN apt update
+	RUN apt install -y nginx
+	COPY index /var/www/html/
+	CMD ["ngnix","-g","daemon off;"]
+
+#Building the docker file
+docker build -t app:v1
+
+#Checking if image is built
+docker images
+
+#Running the docker
+docker run -d -p 2000:80 --name dockerrun app:v1
+
+#Check if docker image is up
+docker ps
