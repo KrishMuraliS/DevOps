@@ -1,0 +1,21 @@
+#Assuming we already have out Docker installed from previous task
+
+#Install Docker Compose
+apt install docker-compose
+
+#Create compose file
+vi docker-compose.yml
+	version: '3'
+	services:
+	     web:
+		image:app:v1
+		container_name:dockerrun
+		ports:
+		   - '80:80'
+		volumes:
+		   - /var/opt/nginx:/var/www/html
+	volumes:
+	  nginx:
+
+#Bringing up docker and running
+docker-compose up -d
