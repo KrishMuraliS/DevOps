@@ -1,0 +1,22 @@
+#Install Docker and Docker-Compose
+sudo apt update
+sudo install docker.io -y
+sudo install docker-compose -y
+#Create Docker-Compose file and launch jenkins with the help of containers
+vi docker-compose.yml
+	version: '3'
+	services:
+	    jenkins:
+	    image: jenkins/jekins:lts
+	    container_name: jenkins
+	    ports:
+		- "8080:8080
+docker-compose up -d
+#Launch jekins using the vm's ip and start with basic regstration
+#Password can be fetched from /var.jenkins_home/secrets/initialadminpassword
+#Install default plugin or desired plugin, Give username password mail id on the screen
+#Create new Item, free style project with desired name, provide description
+#Set source code manegement to git and provide your Git repository link with credentials if its private
+#Build triggers set to Poll SCM, this will keep polling for triggers, value of poll to * * * * * if you need it to keep checking for changes every minute
+#We need to make sure that Email notifier plugin is added
+#Go to Configure and provide keypair
